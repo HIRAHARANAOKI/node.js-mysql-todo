@@ -1,0 +1,54 @@
+<%- include('../header');  %>
+
+    <h1 class="ui header">Todo List</h1>
+
+    <!--  アラートメッセージ -->
+    <% if (messages.success) { %>
+    <div class="ui green message"><%- messages.success %></div>
+    <% } %>
+
+    <% if (messages.error) { %>
+    <div class="ui red message"><%- messages.error %></div>
+    <% } %>
+    <!--  -->
+
+    <a class="ui button teal" href="/todos/create">タスクを追加する<i class="edit icon" style="margin-left: 5px;"></i></a>
+
+        <% if(data.length) { %>
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>content</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+            <% for(var i = 0; i< data.length; i++) { %>
+                <tr>
+                    <th data-label="id"><%= (i+1) %></th>
+                    <td data-label="name"><%= data[i].name%></td>
+                    <td data-label="content"><%= data[i].content%></td>
+                    <td>
+                        <a class="ui button edit" href="../todos/update/<%=data[i].id%>">編集<i class="pencil alternate icon" style="margin-left: 5px;"></i></a>
+                        <a class="ui button delete" onclick="return alert('本当に削除しますか？')" href="../todos/delete/<%=data[i].id%>">削除<i class="trash icon" style="margin-left: 5px;"></i></a>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+
+        </table>
+        <% } %>
+
+        <!-- todoが空の時 -->
+        <% if(!data.length) { %>
+            <p class="text-center">No todo found!</p>
+        <% } %>
+        <!-- -->
+
+        </div>
+
+</body>
+</html>

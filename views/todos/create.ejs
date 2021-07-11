@@ -1,0 +1,29 @@
+<%- include('../header');  %>
+
+    <!--  アラートメッセージ -->
+	<% if (messages.error) { %>
+	<div class="ui red message"><%- messages.error %></div>
+	<% } %>
+    <!-- -->
+
+    	<h2 class="ui header">
+            タスクを追加する
+		</h2>
+        <form class="ui form" action="/todos/create" method="post">
+             <div class="field">
+                <label>タイトル</label>
+                <input type="text"  name="name" value="<%= name %>" autocomplete="off">
+            </div>
+
+            <div class="field">
+                <label>タスク内容</label>
+                <input type="text"  name="content" value="<%= content %>" autocomplete="off">
+            </div>
+
+            <div class="field">
+                <input type="submit" class="ui button" value="追加"/>
+            </div>
+        </form>
+
+</body>
+</html>

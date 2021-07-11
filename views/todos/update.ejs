@@ -1,0 +1,29 @@
+<%- include('../header');  %>
+
+    <h1 class="ui header">Update</h1>
+
+    <!--  アラートメッセージ -->
+	<% if (messages.error) { %>
+	<div class="ui red message"><%- messages.error %></div>
+	<% } %>
+    <!--   -->
+
+    	<h2 class="ui header">
+			編集ページ
+		</h2>
+
+            <form class="ui form" action="/todos/update/<%= id %>" method="post">
+                <div class="field">
+                    <label>name</label>
+                    <input type="text" class="ui field" name="name" value="<%= name %>" autocomplete="off">
+                </div>
+
+                <div class="field">
+                    <label>content</label>
+                    <input type="text" class="ui field" name="content" value="<%= content %>" autocomplete="off">
+                </div>
+
+                    <input type="submit" class="ui button" value="編集する"/>
+            </form>
+</body>
+</html>
